@@ -31,6 +31,7 @@ jobs:
             generators: "Unix Makefiles"
             build_dir: 'build'
     steps:
+    aaaa
       - name: Setup Pragma
         uses: Silverlan/pragma/github_actions/setup@master
         with:
