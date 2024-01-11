@@ -35,6 +35,7 @@ jobs:
         uses: Silverlan/pragma/github_actions/setup@master
         with:
           clone_url: "https://github.com/${{ github.repository }}.git"
+          with_cuda: '1'
 
       - name: Build Pragma
         uses: ./pragma/github_actions/build
