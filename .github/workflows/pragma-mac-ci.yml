@@ -1,0 +1,32 @@
+name: Build macOS
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+concurrency:
+  group: environment-mac-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build - ${{ matrix.config.os }}
+    runs-on: macos-latest  # Change this line to specify macOS environment
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - os: macos-11.2  # Specify the macOS version you want
+            name: "macOS Clang-14"
+            artifact: "macos_clang.7z"
+            build_type: "RelWithDebInfo"
+            cc: "clang-14"
+            cxx: "clang++-14"
+            archiver: "7z a"
+            generators: "Unix Makefiles"
+            build_dir: 'build'
