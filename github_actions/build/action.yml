@@ -30,7 +30,7 @@ runs:
         name: "pragma > build"
   
     - name: Build Pragma
-      if: runner.os == 'Linux'
+      if: runner.os == 'Linux' || runner.os == "macOS"
       id: build-linux
       shell: bash
       working-directory: 'pragma'
